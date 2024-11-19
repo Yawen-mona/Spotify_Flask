@@ -1,0 +1,5 @@
+__pycache__/
+venv/
+.cache-31ajvtsyyhvd6spqbdqcwpeejddy
+APIexample.json
+ticketmaster_key.txt

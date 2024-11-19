@@ -1,0 +1,112 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0a0a0a;
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #1DB954; 
+    font-size: 36px;
+    margin: 0;
+}
+
+main {
+    width: 100%; 
+    max-width: 800px; 
+    text-align: center; 
+}
+
+
+form {
+    background-color: #222; 
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: inline-block;
+    width: 100%; 
+    max-width: 550px; 
+}
+
+fieldset {
+    border: 2px solid #1DB954; 
+    padding: 20px;
+    border-radius: 8px;
+}
+
+legend {
+    font-size: 18px;
+    color: #1DB954; 
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+input[type="date"] {
+    padding: 10px;
+    border: 1px solid #1DB954;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 90%; 
+    max-width: 400px; 
+    text-align: center;
+}
+
+/* Submit Button */
+input[type="submit"] {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 6px;
+    background-color: #1DB954;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+}
+
+input[type="submit"]:hover {
+    background-color: #1ed760;
+    transform: scale(1.05); 
+}
+
+/* Spotify iframe */
+.spotify-widget iframe {
+    width: 100%; 
+    max-width: 600px; 
+    height: 352px; 
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .spotify-widget iframe {
+        width: 90%; 
+        max-width: 100%; 
+    }
+}

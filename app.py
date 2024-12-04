@@ -18,5 +18,14 @@ def index():
     end_date = f"{user_end_date}T00:00:00Z"
     my_songs = get_playlist(start_date, end_date)
 
+    # Check if an error message was returned
+    if isinstance(my_songs, str) and "Error" in my_songs:
+        return render_template(
+            'index.html',
+            error_message=my_songs,
+            start_date=user_start_date,
+            end_date=user_end_date
+        )
+
     return render_template('index.html', playlist_id=my_songs, start_date=user_start_date, end_date=user_end_date)
 

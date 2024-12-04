@@ -25,8 +25,16 @@
 			<input type="submit" value="Submit!">
 		</form>
 
+		{% if error_message %}
+		<div class="error-message">{{ error_message }}</div>
+		{% endif %}
+
 		<section class="spotify-widget">
-			<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/{{ playlist_id }}?utm_source=generator" width="200%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+			{% if playlist_id %}
+				<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/{{ playlist_id }}?utm_source=generator" width="200%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+			{% else %}
+        		<p>No playlist available. Please try different dates.</p>
+    		{% endif %}
 		</section>
 	</main>
 </body>

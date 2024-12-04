@@ -34,10 +34,14 @@ def get_playlist(start_date, end_date):
        f"dmaId={dma_id}&size=200&apikey={ticketmaster_key}")
 
     
-    request = urllib.request.Request(url) 
-    response = urllib.request.urlopen(request)
-    
-    events = json.loads(response.read())
+    try:
+        request = urllib.request.Request(url)
+        response = urllib.request.urlopen(request)
+        events = json.loads(response.read())
+    except Exception as e:
+        # Handle any API or network errors
+        print(f"Error fetching events from Ticketmaster: {e}")
+        return "Error fetching events. Please try other dates later."
     
     songs_for_playlist = []
     
@@ -50,9 +54,13 @@ def get_playlist(start_date, end_date):
             for event in events_list
             if 'name' in event and 'London' in event['_embedded']['venues'][0]['city']['name']
          ]
+    else:
+        # No events found; handle gracefully
+        london_events_info = []
 
-
-
+    # If no events were found, return a message
+    if not london_events_info:
+        return "No events found for the specified dates and location."
 
     for event in london_events_info:
         search_results = sp.search(q=event, type="track", limit=1)
@@ -64,7 +72,12 @@ def get_playlist(start_date, end_date):
     if len(songs_for_playlist) > 30:
         songs_for_playlist = songs_for_playlist[:30]
 
+    try:
+        my_playlist = sp.user_playlist_create(user=username, name="This Week London Music", public=True, description="Songs for this week concert and event music in L")
+        sp.user_playlist_add_tracks(username, my_playlist['id'], songs_for_playlist)
+        return my_playlist['id']
 
-    my_playlist = sp.user_playlist_create(user=username, name="This Week London Music", public=True, description="Songs for this week concert and event music in L")
-    sp.user_playlist_add_tracks(username, my_playlist['id'], songs_for_playlist)
-    return my_playlist['id']
+    except Exception as e:
+        # Handle Spotify API errors
+        print(f"Error creating playlist on Spotify: {e}")
+        return "Error creating playlist on Spotify. Please try other dates later."

@@ -14,7 +14,7 @@ This Flask web application generates a Spotify playlist featuring music tracks r
 ## Prerequisites
 
 1. **Python**
-2. Required Libraries
+2. **Required Libraries**
    - `Flask`
    - `spotipy`
    - `requests`
@@ -46,6 +46,41 @@ This Flask web application generates a Spotify playlist featuring music tracks r
 - Responsive design ensures usability on both desktop and mobile devices.
 - Styled components include the date form, submit button, and Spotify iframe.
 
+
+
+### Setup Instructions 
+
+1. Clone the Repository Clone the project repository
+
+2. Install the Python dependencies using `pip`:
+
+   ```
+   pip install -r requirements.txt
+   ```
+
+3. Set Up API Keys
+
+​        You need to create two configuration files with your API keys:
+
+​	**`APIexample.json` (Spotify API credentials)**: This file contains your Spotify application's client ID,    	client secret, redirect URI, and your Spotify username. The file should be structured as follows:
+
+```
+{
+  "client_id": "your_spotify_client_id",
+  "client_secret": "your_spotify_client_secret",
+  "redirect": "your_spotify_redirect_uri",
+  "username": "your_spotify_username"
+}
+```
+
+​	**`ticketmaster_key.txt` (Ticketmaster API key)**: This file contains your Ticketmaster API key. 
+
+​	You can obtain your key by registering on the Ticketmaster Developer Portal. The file should simply 	contain your key:
+
+```
+ticketmaster_api_key
+```
+
 ## Example Workflow
 
 1. **Input Dates**:
@@ -57,3 +92,6 @@ This Flask web application generates a Spotify playlist featuring music tracks r
 4. **View Playlist**:
    The generated playlist is embedded into the web page using a Spotify iframe.
 
+## Error Handling
+
+If there is an issue with fetching events or generating the playlist,  change the default start date and end date to your current dates to enable the app fetching events.
